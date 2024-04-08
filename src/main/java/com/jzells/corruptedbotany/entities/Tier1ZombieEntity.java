@@ -55,6 +55,6 @@ public class Tier1ZombieEntity extends Monster {
     @Nullable
     @Override
     protected SoundEvent getAmbientSound() {
-        return SoundEvents.ZOGLIN_AMBIENT;
+        return SoundEvents.ZOMBIE_AMBIENT;
     }
 }

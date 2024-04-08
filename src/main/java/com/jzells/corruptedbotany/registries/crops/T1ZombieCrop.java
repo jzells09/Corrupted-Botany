@@ -5,8 +5,6 @@ import com.jzells.corruptedbotany.registries.EntityRegistries;
 import com.jzells.corruptedbotany.registries.Registries;
 import com.jzells.corruptedbotany.registries.crops.util.CorruptedCrop;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.monster.Skeleton;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;

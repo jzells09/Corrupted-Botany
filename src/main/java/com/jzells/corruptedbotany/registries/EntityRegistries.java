@@ -2,6 +2,7 @@ package com.jzells.corruptedbotany.registries;
 
 import com.jzells.corruptedbotany.CorruptedBotany;
 import com.jzells.corruptedbotany.entities.Tier1ZombieEntity;
+import com.jzells.corruptedbotany.entities.Tier2ZombieEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -16,6 +17,9 @@ public class EntityRegistries {
     public static final RegistryObject<EntityType<Tier1ZombieEntity>> TIER_1_ZOMBIE =
             ENTITIES.register("tier_1_zombie", ()-> EntityType.Builder.of(Tier1ZombieEntity::new, MobCategory.MONSTER)
                     .sized(0.6F, 1.95F).build("tier_1_zombie"));
+    public static final RegistryObject<EntityType<Tier2ZombieEntity>> TIER_2_ZOMBIE =
+            ENTITIES.register("tier_2_zombie", ()-> EntityType.Builder.of(Tier2ZombieEntity::new, MobCategory.MONSTER)
+                    .sized(0.6F, 1.95F).build("tier_2_zombie"));
 
 
     public static void register(IEventBus iEventBus){

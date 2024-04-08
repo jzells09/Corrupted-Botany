@@ -1,4 +1,8 @@
 {
   "item.corruptedbotany.tier_1_zombie_seed": "Malicious Zombie Seed",
-  "item.corruptedbotany.tier_1_essence": "Malicious Essence"
+  "item.corruptedbotany.tier_2_zombie_seed": "Melancholy Zombie Seed",
+  "item.corruptedbotany.tier_1_essence": "Malicious Essence",
+  "item.corruptedbotany.tier_2_essence": "Melancholy Essence",
+  "item.corruptedbotany.bone_dust": "Bone Dust",
+  "item.corruptedbotany.bone_ash": "Bone Ashes"
 }

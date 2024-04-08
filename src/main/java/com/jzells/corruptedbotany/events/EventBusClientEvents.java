@@ -13,5 +13,6 @@ public class EventBusClientEvents {
     @SubscribeEvent
     public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions event){
         event.registerLayerDefinition(ModelLayers.TIER_1_ZOMBIE, Tier1ZombieModel::createBodyLayer);
+        event.registerLayerDefinition(ModelLayers.TIER_2_ZOMBIE, Tier1ZombieModel::createBodyLayer);
     }
 }

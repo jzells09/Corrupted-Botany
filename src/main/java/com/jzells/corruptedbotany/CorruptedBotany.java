@@ -1,6 +1,7 @@
 package com.jzells.corruptedbotany;
 
 import com.jzells.corruptedbotany.entities.client.Tier1ZombieRenderer;
+import com.jzells.corruptedbotany.entities.client.Tier2ZombieRenderer;
 import com.jzells.corruptedbotany.registries.EntityRegistries;
 import com.jzells.corruptedbotany.registries.Registries;
 import com.mojang.logging.LogUtils;
@@ -58,6 +59,7 @@ public class CorruptedBotany
     {
 
         ItemBlockRenderTypes.setRenderLayer(Registries.T1ZOMBIE_CROP.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(Registries.T2ZOMBIE_CROP.get(), RenderType.cutout());
 
         // Some common setup code
         LOGGER.info("Hello from Corrupted Botany!");
@@ -75,7 +77,11 @@ public class CorruptedBotany
     {
         if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
             event.accept(Registries.T1ZSEED);
+            event.accept(Registries.T2ZSEED);
             event.accept(Registries.T1ESSENCE);
+            event.accept(Registries.T2ESSENCE);
+            event.accept(Registries.BONE_ASH);
+            event.accept(Registries.BONE_DUST);
         }
     }
 
@@ -95,6 +101,7 @@ public class CorruptedBotany
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             EntityRenderers.register(EntityRegistries.TIER_1_ZOMBIE.get(), Tier1ZombieRenderer::new);
+            EntityRenderers.register(EntityRegistries.TIER_2_ZOMBIE.get(), Tier2ZombieRenderer::new);
         }
     }
 }

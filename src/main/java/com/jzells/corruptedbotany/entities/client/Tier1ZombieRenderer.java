@@ -3,7 +3,6 @@ package com.jzells.corruptedbotany.entities.client;
 import com.jzells.corruptedbotany.CorruptedBotany;
 import com.jzells.corruptedbotany.entities.Tier1ZombieEntity;
 import com.jzells.corruptedbotany.entities.client.model.Tier1ZombieModel;
-import com.jzells.corruptedbotany.registries.EntityRegistries;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;

@@ -2,6 +2,8 @@ package com.jzells.corruptedbotany.registries;
 
 import com.jzells.corruptedbotany.CorruptedBotany;
 import com.jzells.corruptedbotany.registries.crops.T1ZombieCrop;
+import com.jzells.corruptedbotany.registries.crops.T2ZombieCrop;
+import com.jzells.corruptedbotany.registries.items.BoneAshItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
@@ -27,18 +29,30 @@ public class Registries {
 
     public static final RegistryObject<Item> T1ESSENCE = ITEMS.register("tier_1_essence",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> T2ESSENCE = ITEMS.register("tier_2_essence",
+            () -> new Item(new Item.Properties()));
+
+
+    public static final RegistryObject<Item> BONE_DUST = ITEMS.register("bone_dust",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> BONE_ASH = ITEMS.register("bone_ash",
+            () -> new BoneAshItem(new Item.Properties()));
 
     //SEEDS
 
 
     public static final RegistryObject<Item> T1ZSEED = ITEMS.register("tier_1_zombie_seed",
             () -> new ItemNameBlockItem(Registries.T1ZOMBIE_CROP.get(), new Item.Properties()));
+    public static final RegistryObject<Item> T2ZSEED = ITEMS.register("tier_2_zombie_seed",
+            () -> new ItemNameBlockItem(Registries.T2ZOMBIE_CROP.get(), new Item.Properties()));
 
 
     //BLOCKS
 
     public static final RegistryObject<Block> T1ZOMBIE_CROP = BLOCKS.register("tier_1_zombie_crop",
             ()->new T1ZombieCrop(BlockBehaviour.Properties.copy(Blocks.WHEAT).sound(SoundType.CHAIN).noOcclusion().noCollission()));
+    public static final RegistryObject<Block> T2ZOMBIE_CROP = BLOCKS.register("tier_2_zombie_crop",
+            ()->new T2ZombieCrop(BlockBehaviour.Properties.copy(Blocks.WHEAT).sound(SoundType.CHAIN).noOcclusion().noCollission()));
 
 
     public static void register(IEventBus iEventBus){

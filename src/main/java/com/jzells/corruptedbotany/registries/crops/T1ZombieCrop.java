@@ -18,12 +18,15 @@ public class T1ZombieCrop extends CorruptedCrop {
     @Override
     public boolean onDestroyedByPlayer(BlockState state, Level level, BlockPos pos, Player player, boolean willHarvest, FluidState fluid) {
         Tier1ZombieEntity zombieEntity = new Tier1ZombieEntity(EntityRegistries.TIER_1_ZOMBIE.get(), level);
-        zombieEntity.setPos(Vec3.atCenterOf(pos));
-        if(willHarvest){
+
+        if(this.isMaxAge(state) && willHarvest){
+            zombieEntity.setPos(Vec3.atCenterOf(pos));
             level.addFreshEntity(zombieEntity);
         }
         return super.onDestroyedByPlayer(state,level,pos,player,willHarvest,fluid);
     }
+
+
 
     public T1ZombieCrop(Properties pProperties) {
         super(pProperties);

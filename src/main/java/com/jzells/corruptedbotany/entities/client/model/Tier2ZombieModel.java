@@ -12,11 +12,11 @@ import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.world.entity.Entity;
 
-public class Tier1ZombieModel<T extends Entity> extends HierarchicalModel<T> {
+public class Tier2ZombieModel<T extends Entity> extends HierarchicalModel<T> {
 
 	private final ModelPart tier_1_zombie;
 
-	public Tier1ZombieModel(ModelPart root) {
+	public Tier2ZombieModel(ModelPart root) {
 		this.tier_1_zombie = root.getChild("tier_1_zombie");
 	}
 

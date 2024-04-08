@@ -1,0 +1,10 @@
+{
+  "variants": {
+      "age=0": { "model": "corruptedbotany:block/tier_2_zombie_crop_stage_1" },
+      "age=1": { "model": "corruptedbotany:block/tier_2_zombie_crop_stage_2" },
+      "age=2": { "model": "corruptedbotany:block/tier_2_zombie_crop_stage_3" },
+      "age=3": { "model": "corruptedbotany:block/tier_2_zombie_crop_stage_4" },
+      "age=4": { "model": "corruptedbotany:block/tier_2_zombie_crop_stage_5" },
+      "age=5": { "model": "corruptedbotany:block/tier_2_zombie_crop_stage_6" }
+  }
+}

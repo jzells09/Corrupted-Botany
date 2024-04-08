@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "corruptedbotany:block/tier_1_zombie_crop_stage_6"
+  }
+}

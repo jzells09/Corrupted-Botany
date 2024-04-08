@@ -1,7 +1,14 @@
 package com.jzells.corruptedbotany;
 
+import com.jzells.corruptedbotany.entities.client.Tier1ZombieRenderer;
+import com.jzells.corruptedbotany.registries.EntityRegistries;
+import com.jzells.corruptedbotany.registries.Registries;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -31,6 +38,9 @@ public class CorruptedBotany
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        Registries.register(modEventBus);
+        EntityRegistries.register(modEventBus);
+
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
@@ -46,6 +56,9 @@ public class CorruptedBotany
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
+
+        ItemBlockRenderTypes.setRenderLayer(Registries.T1ZOMBIE_CROP.get(), RenderType.cutout());
+
         // Some common setup code
         LOGGER.info("Hello from Corrupted Botany!");
 
@@ -60,7 +73,10 @@ public class CorruptedBotany
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
-
+        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
+            event.accept(Registries.T1ZSEED);
+            event.accept(Registries.T1ESSENCE);
+        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
@@ -78,9 +94,7 @@ public class CorruptedBotany
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-            // Some client setup code
-            LOGGER.info("HELLO FROM CLIENT SETUP");
-            LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+            EntityRenderers.register(EntityRegistries.TIER_1_ZOMBIE.get(), Tier1ZombieRenderer::new);
         }
     }
 }

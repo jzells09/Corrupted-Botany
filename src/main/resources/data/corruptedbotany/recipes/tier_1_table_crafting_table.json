@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#W#",
+    "CDC",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:blackstone"
+    },
+    "W": {
+      "item": "corruptedbotany:bone_dust"
+    },
+    "C": {
+      "item": "corruptedbotany:tier_0_essence"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "item": "corruptedbotany:tier_1_table",
+    "count": 1
+  }
+}

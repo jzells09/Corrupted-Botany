@@ -74,7 +74,7 @@ public class CorruptedBotany
 
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event)
-    {
+    { // tdl -> make creative tab lol
         if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
             event.accept(Registries.T1ZSEED);
             event.accept(Registries.T2ZSEED);
@@ -82,6 +82,7 @@ public class CorruptedBotany
             event.accept(Registries.T2ESSENCE);
             event.accept(Registries.BONE_ASH);
             event.accept(Registries.BONE_DUST);
+            event.accept(Registries.T0ESSENCE);
         }
     }
 

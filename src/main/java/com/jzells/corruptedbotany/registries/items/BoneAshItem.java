@@ -2,6 +2,7 @@ package com.jzells.corruptedbotany.registries.items;
 
 import com.jzells.corruptedbotany.registries.Registries;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -31,11 +32,20 @@ public class BoneAshItem extends Item {
         ItemEntity item = new ItemEntity(level, context.getPlayer().getX(), context.getPlayer().getY(), context.getPlayer().getZ(), new ItemStack(Registries.T0ESSENCE.get()));
         ItemStack itemStack = player.getOffhandItem();
         if(player.getOffhandItem().is(Items.NETHER_WART)){
-            stack.setCount(stack.getCount() - 1);
-            itemStack.setCount(itemStack.getCount()-1);
+            if(!player.isCreative()){
+                stack.setCount(stack.getCount() - 1);
+                itemStack.setCount(itemStack.getCount()-1);
+            }
             level.addFreshEntity(item);
             level.playLocalSound(context.getPlayer().getX(), context.getPlayer().getY(), context.getPlayer().getZ(), SoundEvents.BLAZE_DEATH, SoundSource.BLOCKS, .2f, 2f, true);
             player.hurt(player.damageSources().magic(),2.5f);
+
+
+            for (int i = 0; i < 30; i++){
+                float randomPos = (float)Math.random();
+                level.addParticle(ParticleTypes.CRIMSON_SPORE,player.getX()-randomPos, player.getY()-randomPos,player.getZ()-randomPos,0,0.2F,0);
+                level.addParticle(ParticleTypes.CRIMSON_SPORE,player.getX()+randomPos, player.getY()+randomPos,player.getZ()+randomPos,0,0.2F,0);
+            }
         }
         return super.onItemUseFirst(stack, context);
     }

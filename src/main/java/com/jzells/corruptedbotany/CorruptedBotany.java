@@ -78,11 +78,12 @@ public class CorruptedBotany
         if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
             event.accept(Registries.T1ZSEED);
             event.accept(Registries.T2ZSEED);
+            event.accept(Registries.T0ESSENCE);
             event.accept(Registries.T1ESSENCE);
             event.accept(Registries.T2ESSENCE);
             event.accept(Registries.BONE_ASH);
             event.accept(Registries.BONE_DUST);
-            event.accept(Registries.T0ESSENCE);
+
         }
     }
 

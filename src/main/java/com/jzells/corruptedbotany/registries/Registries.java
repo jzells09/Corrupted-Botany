@@ -5,9 +5,8 @@ import com.jzells.corruptedbotany.registries.blocks.Tier1Table;
 import com.jzells.corruptedbotany.registries.crops.T1ZombieCrop;
 import com.jzells.corruptedbotany.registries.crops.T2ZombieCrop;
 import com.jzells.corruptedbotany.registries.items.BoneAshItem;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemNameBlockItem;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
@@ -33,6 +32,9 @@ public class Registries {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> T2ESSENCE = ITEMS.register("tier_2_essence",
             () -> new Item(new Item.Properties()));
+    public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TAB =
+            // forge registries, NOT my registries. use different name for class next time
+            DeferredRegister.create(net.minecraft.core.registries.Registries.CREATIVE_MODE_TAB, CorruptedBotany.MODID);
 
 
 
@@ -61,9 +63,31 @@ public class Registries {
             ()-> new Tier1Table(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.ANVIL)));
 
 
+    //CREATIVE MODE TABS
+
+    public static final RegistryObject<CreativeModeTab> CB_TAB = CREATIVE_MODE_TAB.register("corruptedbotany_tab",
+            ()-> CreativeModeTab.builder().icon(() -> new ItemStack(Registries.T2ESSENCE.get()))
+                    .title(Component.translatable("creativetab.corruptedbotany_tab"))
+                    .displayItems((itemDisplayParameters, output) -> {
+                        output.accept(Registries.T0ESSENCE.get());
+                        output.accept(Registries.T1ESSENCE.get());
+                        output.accept(Registries.T2ESSENCE.get());
+
+                        output.accept(Registries.T1ZSEED.get());
+                        output.accept(Registries.T2ZSEED.get());
+
+                        output.accept(Registries.BONE_DUST.get());
+                        output.accept(Registries.BONE_ASH.get());
+
+                        output.accept(Registries.TIER_1_TABLE.get());
+
+
+                    }).build());
+
     public static void register(IEventBus iEventBus){
         ITEMS.register(iEventBus);
         BLOCKS.register(iEventBus);
+        CREATIVE_MODE_TAB.register(iEventBus);
     }
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block){
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

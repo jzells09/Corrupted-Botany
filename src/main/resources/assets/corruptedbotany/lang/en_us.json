@@ -5,5 +5,8 @@
   "item.corruptedbotany.tier_2_essence": "Melancholy Essence",
   "item.corruptedbotany.tier_0_essence": "Dormant Essence",
   "item.corruptedbotany.bone_dust": "Bone Dust",
-  "item.corruptedbotany.bone_ash": "Bone Ashes"
+  "item.corruptedbotany.bone_ash": "Bone Ashes",
+
+  "tooltip.corruptbotany.tier_1_table.tooltip": "\u00A74 This block is INCREDIBLY unusable and a WIP!!!"
+
 }

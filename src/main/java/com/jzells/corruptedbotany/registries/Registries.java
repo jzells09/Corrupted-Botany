@@ -31,6 +31,8 @@ public class Registries {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> T2ESSENCE = ITEMS.register("tier_2_essence",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> T0ESSENCE = ITEMS.register("tier_0_essence",
+            () -> new Item(new Item.Properties()));
 
 
     public static final RegistryObject<Item> BONE_DUST = ITEMS.register("bone_dust",

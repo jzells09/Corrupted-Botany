@@ -28,11 +28,11 @@ public class BoneAshItem extends Item {
     public InteractionResult onItemUseFirst(ItemStack stack, UseOnContext context) {
         Player player = context.getPlayer();
         Level level = context.getLevel();
-        ItemEntity item = new ItemEntity(level, context.getPlayer().getX(), context.getPlayer().getY(), context.getPlayer().getZ(), new ItemStack(Registries.T2ESSENCE.get()));
-        ItemStack itemStack = new ItemStack(player.getOffhandItem().getItem());
+        ItemEntity item = new ItemEntity(level, context.getPlayer().getX(), context.getPlayer().getY(), context.getPlayer().getZ(), new ItemStack(Registries.T0ESSENCE.get()));
+        ItemStack itemStack = player.getOffhandItem();
         if(player.getOffhandItem().is(Items.NETHER_WART)){
             stack.setCount(stack.getCount() - 1);
-            itemStack.setCount(itemStack.getCount()-1); // to-do: make nether wart stack go down by 1 on use as well <- this isnt working???
+            itemStack.setCount(itemStack.getCount()-1);
             level.addFreshEntity(item);
             level.playLocalSound(context.getPlayer().getX(), context.getPlayer().getY(), context.getPlayer().getZ(), SoundEvents.BLAZE_DEATH, SoundSource.BLOCKS, .2f, 2f, true);
             player.hurt(player.damageSources().magic(),2.5f);

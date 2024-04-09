@@ -33,7 +33,7 @@ public class Registries {
     public static final RegistryObject<Item> T2ESSENCE = ITEMS.register("tier_2_essence",
             () -> new Item(new Item.Properties()));
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TAB =
-            // forge registries, NOT my registries. use different name for class next time
+            // forge registries, NOT my registries. use different name for class next time!!! OOPS
             DeferredRegister.create(net.minecraft.core.registries.Registries.CREATIVE_MODE_TAB, CorruptedBotany.MODID);
 
 

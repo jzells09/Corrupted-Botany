@@ -1,6 +1,5 @@
 package com.jzells.corruptedbotany.registries.crops;
 
-import com.jzells.corruptedbotany.entities.Tier1ZombieEntity;
 import com.jzells.corruptedbotany.entities.Tier2ZombieEntity;
 import com.jzells.corruptedbotany.registries.EntityRegistries;
 import com.jzells.corruptedbotany.registries.Registries;

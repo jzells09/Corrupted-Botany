@@ -1,9 +1,13 @@
 {
   "item.corruptedbotany.tier_1_zombie_seed": "Malicious Zombie Seed",
   "item.corruptedbotany.tier_2_zombie_seed": "Melancholy Zombie Seed",
-  "item.corruptedbotany.tier_1_essence": "Malicious Essence",
-  "item.corruptedbotany.tier_2_essence": "Melancholy Essence",
+  "item.corruptedbotany.tier_1_essence": "Melancholy Essence",
+  "item.corruptedbotany.tier_2_essence": "Malicious Essence",
   "item.corruptedbotany.tier_0_essence": "Dormant Essence",
+  "item.corruptedbotany.tier_3_essence": "Corrupt Essence",
+  "item.corruptedbotany.tier_4_essence": "Malevolent Essence",
+  "item.corruptedbotany.tier_5_essence": "Evil Essence",
+  "item.corruptedbotany.tier_6_essence": "Awakened Evil Essence",
   "item.corruptedbotany.bone_dust": "Bone Dust",
   "item.corruptedbotany.bone_ash": "Bone Ashes",
 

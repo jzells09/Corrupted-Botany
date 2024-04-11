@@ -32,6 +32,14 @@ public class Registries {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> T2ESSENCE = ITEMS.register("tier_2_essence",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> T3ESSENCE = ITEMS.register("tier_3_essence",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> T4ESSENCE = ITEMS.register("tier_4_essence",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> T5ESSENCE = ITEMS.register("tier_5_essence",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> TE6SSENCE = ITEMS.register("tier_6_essence",
+            () -> new Item(new Item.Properties()));
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TAB =
             // forge registries, NOT my registries. use different name for class next time!!! OOPS
             DeferredRegister.create(net.minecraft.core.registries.Registries.CREATIVE_MODE_TAB, CorruptedBotany.MODID);
@@ -72,6 +80,10 @@ public class Registries {
                         output.accept(Registries.T0ESSENCE.get());
                         output.accept(Registries.T1ESSENCE.get());
                         output.accept(Registries.T2ESSENCE.get());
+                        output.accept(Registries.T3ESSENCE.get());
+                        output.accept(Registries.T4ESSENCE.get());
+                        output.accept(Registries.T5ESSENCE.get());
+                        output.accept(Registries.TE6SSENCE.get());
 
                         output.accept(Registries.T1ZSEED.get());
                         output.accept(Registries.T2ZSEED.get());

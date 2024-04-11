@@ -1,7 +1,7 @@
 package com.jzells.corruptedbotany.registries;
 
 import com.jzells.corruptedbotany.CorruptedBotany;
-import com.jzells.corruptedbotany.registries.blocks.Tier1Table;
+import com.jzells.corruptedbotany.registries.blocks.Tier1TableBlock;
 import com.jzells.corruptedbotany.registries.crops.T1ZombieCrop;
 import com.jzells.corruptedbotany.registries.crops.T2ZombieCrop;
 import com.jzells.corruptedbotany.registries.items.BoneAshItem;
@@ -59,8 +59,8 @@ public class Registries {
     public static final RegistryObject<Block> T2ZOMBIE_CROP = BLOCKS.register("tier_2_zombie_crop",
             ()->new T2ZombieCrop(BlockBehaviour.Properties.copy(Blocks.WHEAT).sound(SoundType.CHAIN).noOcclusion().noCollission()));
 
-    public static final RegistryObject<Tier1Table> TIER_1_TABLE = registerBlock("tier_1_table",
-            ()-> new Tier1Table(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.ANVIL)));
+    public static final RegistryObject<Tier1TableBlock> TIER_1_TABLE = registerBlock("tier_1_table",
+            ()-> new Tier1TableBlock(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.ANVIL)));
 
 
     //CREATIVE MODE TABS

@@ -2,6 +2,7 @@ package com.jzells.corruptedbotany;
 
 import com.jzells.corruptedbotany.entities.client.Tier1ZombieRenderer;
 import com.jzells.corruptedbotany.entities.client.Tier2ZombieRenderer;
+import com.jzells.corruptedbotany.registries.BlockEntityRegistries;
 import com.jzells.corruptedbotany.registries.EntityRegistries;
 import com.jzells.corruptedbotany.registries.Registries;
 import com.mojang.logging.LogUtils;
@@ -41,6 +42,7 @@ public class CorruptedBotany
 
         Registries.register(modEventBus);
         EntityRegistries.register(modEventBus);
+        BlockEntityRegistries.register(modEventBus);
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);

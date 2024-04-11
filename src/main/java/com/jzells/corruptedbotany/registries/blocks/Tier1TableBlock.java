@@ -1,12 +1,13 @@
 package com.jzells.corruptedbotany.registries.blocks;
 
+import com.jzells.corruptedbotany.registries.BlockEntityRegistries;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -19,8 +20,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class Tier1Table extends BaseEntityBlock {
-    public Tier1Table(Properties pProperties) {
+public class Tier1TableBlock extends Block implements EntityBlock {
+    public Tier1TableBlock(Properties pProperties) {
         super(pProperties);
     }
     private static final VoxelShape SHAPE = Shapes.join(Block.box(3, 9, 3, 13, 11, 13), Stream.of(
@@ -44,23 +45,16 @@ public class Tier1Table extends BaseEntityBlock {
     }
 
     @Override
-    public RenderShape getRenderShape(BlockState pState) {
-        return RenderShape.MODEL;
-    }
-
-    @Override
     public void appendHoverText(ItemStack pStack, @Nullable BlockGetter pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
         pTooltip.add(Component.translatable("tooltip.corruptbotany.tier_1_table.tooltip"));
         super.appendHoverText(pStack, pLevel, pTooltip, pFlag);
     }
 
-    // figure out
+
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
-        return null;
+        return BlockEntityRegistries.TIER_1_TABLE_ENTITY.get().create(blockPos,blockState);
     }
-
-
 }
 

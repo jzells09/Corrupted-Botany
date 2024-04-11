@@ -69,9 +69,11 @@ public class Tier1TableBlock extends Block implements EntityBlock {
             BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
             if(blockEntity instanceof Tier1TableBlockEntity tier1TableBlockEntity){
                 pPlayer.sendSystemMessage(Component.literal("Block entity has been used"));
+                return InteractionResult.sidedSuccess(pLevel.isClientSide());
             }
         }
-        return super.use(pState, pLevel, pPos, pPlayer, pHand, pHit);
+        return super.use(pState,pLevel,pPos,pPlayer,pHand,pHit);
+
     }
 }
 

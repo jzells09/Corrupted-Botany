@@ -10,6 +10,10 @@
   "item.corruptedbotany.tier_6_essence": "Awakened Evil Essence",
   "item.corruptedbotany.bone_dust": "Bone Dust",
   "item.corruptedbotany.bone_ash": "Bone Ashes",
+  "item.corruptedbotany.zombie_dna": "Zombie Plant DNA",
+  "item.corruptedbotany.spider_dna": "Spider Plant DNA",
+  "item.corruptedbotany.creeper_dna": "Creeper Plant DNA",
+  "item.corruptedbotany.skeleton_dna": "Skeleton Plant DNA",
 
   "tooltip.corruptbotany.tier_1_table.tooltip": "\u00A74This block is INCREDIBLY unusable and a WIP!!! (it literally does nothing)",
 

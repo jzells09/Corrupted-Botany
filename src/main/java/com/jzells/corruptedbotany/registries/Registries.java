@@ -51,6 +51,14 @@ public class Registries {
     public static final RegistryObject<Item> BONE_ASH = ITEMS.register("bone_ash",
             () -> new BoneAshItem(new Item.Properties()));
 
+    public static final RegistryObject<Item> ZOMBIE_DNA = ITEMS.register("zombie_dna",
+            () -> new BoneAshItem(new Item.Properties()));
+    public static final RegistryObject<Item> SKELETON_DNA = ITEMS.register("skeleton_dna",
+            () -> new BoneAshItem(new Item.Properties()));
+    public static final RegistryObject<Item> SPIDER_DNA = ITEMS.register("spider_dna",
+            () -> new BoneAshItem(new Item.Properties()));
+    public static final RegistryObject<Item> CREEPER_DNA = ITEMS.register("creeper_dna",
+            () -> new BoneAshItem(new Item.Properties()));
     //SEEDS
 
 
@@ -84,6 +92,11 @@ public class Registries {
                         output.accept(Registries.T4ESSENCE.get());
                         output.accept(Registries.T5ESSENCE.get());
                         output.accept(Registries.TE6SSENCE.get());
+
+                        output.accept(Registries.CREEPER_DNA.get());
+                        output.accept(Registries.SKELETON_DNA.get());
+                        output.accept(Registries.ZOMBIE_DNA.get());
+                        output.accept(Registries.SPIDER_DNA.get());
 
                         output.accept(Registries.T1ZSEED.get());
                         output.accept(Registries.T2ZSEED.get());

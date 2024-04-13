@@ -2,6 +2,7 @@ package com.jzells.corruptedbotany;
 
 import com.jzells.corruptedbotany.entities.client.Tier1ZombieRenderer;
 import com.jzells.corruptedbotany.entities.client.Tier2ZombieRenderer;
+import com.jzells.corruptedbotany.entities.client.Tier3ZombieSpiderRenderer;
 import com.jzells.corruptedbotany.registries.BlockEntityRegistries;
 import com.jzells.corruptedbotany.registries.EntityRegistries;
 import com.jzells.corruptedbotany.registries.Registries;
@@ -97,6 +98,8 @@ public class CorruptedBotany
         {
             EntityRenderers.register(EntityRegistries.TIER_1_ZOMBIE.get(), Tier1ZombieRenderer::new);
             EntityRenderers.register(EntityRegistries.TIER_2_ZOMBIE.get(), Tier2ZombieRenderer::new);
+
+            EntityRenderers.register(EntityRegistries.TIER_3_ZOMBIESPIDER_H.get(), Tier3ZombieSpiderRenderer::new);
         }
     }
 }

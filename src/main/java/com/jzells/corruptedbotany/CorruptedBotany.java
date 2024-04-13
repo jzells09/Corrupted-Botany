@@ -1,17 +1,15 @@
 package com.jzells.corruptedbotany;
 
-import com.jzells.corruptedbotany.entities.client.Tier1ZombieRenderer;
-import com.jzells.corruptedbotany.entities.client.Tier2ZombieRenderer;
-import com.jzells.corruptedbotany.entities.client.Tier3ZombieSpiderRenderer;
+import com.jzells.corruptedbotany.entities.client.renderers.Tier1ZombieRenderer;
+import com.jzells.corruptedbotany.entities.client.renderers.Tier2ZombieRenderer;
+import com.jzells.corruptedbotany.entities.client.renderers.Tier3ZombieSpiderRenderer;
 import com.jzells.corruptedbotany.registries.BlockEntityRegistries;
 import com.jzells.corruptedbotany.registries.EntityRegistries;
 import com.jzells.corruptedbotany.registries.Registries;
 import com.mojang.logging.LogUtils;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;

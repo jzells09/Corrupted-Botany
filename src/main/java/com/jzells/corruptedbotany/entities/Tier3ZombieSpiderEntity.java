@@ -22,7 +22,7 @@ public class Tier3ZombieSpiderEntity extends Monster {
 
     @Override
     public int getExperienceReward() {
-        return 2;
+        return 10;
     }
 
     @Override
@@ -32,11 +32,11 @@ public class Tier3ZombieSpiderEntity extends Monster {
 
     public static AttributeSupplier.Builder createAttributes(){
         return Monster.createMonsterAttributes()
-                .add(Attributes.ATTACK_DAMAGE, 3F)
+                .add(Attributes.ATTACK_DAMAGE, 4F)
                 .add(Attributes.ATTACK_SPEED, 2F)
                 .add(Attributes.MAX_HEALTH, 20F)
                 .add(Attributes.FOLLOW_RANGE, 35F)
-                .add(Attributes.MOVEMENT_SPEED, .3F);
+                .add(Attributes.MOVEMENT_SPEED, .4F);
     }
 
     @Override

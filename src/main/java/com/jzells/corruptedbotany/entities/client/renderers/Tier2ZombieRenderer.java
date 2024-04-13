@@ -1,9 +1,8 @@
-package com.jzells.corruptedbotany.entities.client;
+package com.jzells.corruptedbotany.entities.client.renderers;
 
 import com.jzells.corruptedbotany.CorruptedBotany;
-import com.jzells.corruptedbotany.entities.Tier1ZombieEntity;
 import com.jzells.corruptedbotany.entities.Tier2ZombieEntity;
-import com.jzells.corruptedbotany.entities.client.model.Tier1ZombieModel;
+import com.jzells.corruptedbotany.entities.client.ModelLayers;
 import com.jzells.corruptedbotany.entities.client.model.Tier2ZombieModel;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;

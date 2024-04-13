@@ -1,11 +1,16 @@
 package com.jzells.corruptedbotany.registries.blocks;
 
+import com.jzells.corruptedbotany.entities.client.ClientHooks;
 import com.jzells.corruptedbotany.registries.BlockEntityRegistries;
 import com.jzells.corruptedbotany.registries.blocks.blockentity.Tier1TableBlockEntity;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -20,6 +25,9 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -64,15 +72,35 @@ public class Tier1TableBlock extends Block implements EntityBlock {
 
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        if(!pLevel.isClientSide()){
-            BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
-            if(blockEntity instanceof Tier1TableBlockEntity tier1TableBlockEntity){
-                pPlayer.sendSystemMessage(Component.literal("Block entity has been used"));
-                return InteractionResult.sidedSuccess(pLevel.isClientSide());
-            }
+        if(pHand != InteractionHand.MAIN_HAND) return InteractionResult.PASS;
+        if(!pLevel.isClientSide()) return InteractionResult.SUCCESS;
+        BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
+
+        if(blockEntity instanceof  Tier1TableBlockEntity){
+            // open screen
+            DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> ClientHooks.openTier1TableBlockScreen(pPos));
+            return  InteractionResult.SUCCESS;
         }
-        return super.use(pState,pLevel,pPos,pPlayer,pHand,pHit);
+        return  InteractionResult.FAIL;
 
     }
+
+    @Override
+    public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pMovedByPiston) {
+        if(!pLevel.isClientSide()){
+            BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
+            if(blockEntity instanceof Tier1TableBlockEntity tableBlockEntity){
+                ItemStackHandler inv = ((Tier1TableBlockEntity) blockEntity).getInventory();
+                for(int i = 0; i < inv.getSlots(); i++){
+                    ItemStack stack = inv.getStackInSlot(i);
+                    var entity = new ItemEntity(pLevel, pPos.getX()+0.5D, pPos.getY()+0.5D, pPos.getZ()+0.5D, stack);
+                    pLevel.addFreshEntity(entity);
+                }
+            }
+        }
+        super.onRemove(pState, pLevel, pPos, pNewState, pMovedByPiston);
+    }
+
+
 }
 

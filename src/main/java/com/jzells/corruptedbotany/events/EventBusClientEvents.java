@@ -2,7 +2,6 @@ package com.jzells.corruptedbotany.events;
 
 import com.jzells.corruptedbotany.CorruptedBotany;
 import com.jzells.corruptedbotany.entities.client.ModelLayers;
-import com.jzells.corruptedbotany.entities.client.Tier3ZombieSpiderRenderer;
 import com.jzells.corruptedbotany.entities.client.model.Tier1ZombieModel;
 import com.jzells.corruptedbotany.entities.client.model.Tier3ZombieSpiderModel;
 import net.minecraftforge.api.distmarker.Dist;

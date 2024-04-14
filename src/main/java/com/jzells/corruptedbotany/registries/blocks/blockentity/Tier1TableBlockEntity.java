@@ -12,6 +12,7 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -29,10 +30,13 @@ import java.util.Optional;
 public class Tier1TableBlockEntity extends BlockEntity implements MenuProvider {
     public Tier1TableBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(BlockEntityRegistries.TIER_1_TABLE_ENTITY.get(), pPos, pBlockState);
+
     }
-    private static final int OUTPUT_SLOT = 27;
+    private static final int OUTPUT_SLOT = 26;
 
     private static final Component TITLE = Component.translatable("container.corruptedbotany.tier_1_table_block");
+
+
 
     private final ItemStackHandler inventory = new ItemStackHandler(27){
         @Override
@@ -117,7 +121,7 @@ public class Tier1TableBlockEntity extends BlockEntity implements MenuProvider {
     }
 
 
-    private void craftItem(){
+    public void craftItem(){
         Optional<Tier1TableRecipie> recipe = getCurrentRecipe();
         ItemStack result = recipe.get().getResultItem(null);
         for(int i = 0; i < 25; i++){
@@ -127,7 +131,7 @@ public class Tier1TableBlockEntity extends BlockEntity implements MenuProvider {
                 this.inventory.getStackInSlot(OUTPUT_SLOT).getCount() + result.getCount()));
     }
 
-    private boolean hasRecipe(){
+    public boolean hasRecipe(){
         Optional<Tier1TableRecipie> recipe = getCurrentRecipe();
 
         if(recipe.isEmpty()){
@@ -135,7 +139,7 @@ public class Tier1TableBlockEntity extends BlockEntity implements MenuProvider {
         }
         ItemStack result = recipe.get().getResultItem(null);
 
-        return  canInsertAmountIntoOutputSlot(result.getCount()) && canInsertItemIntoOutputSlot(result.getItem());
+        return canInsertAmountIntoOutputSlot(result.getCount()) && canInsertItemIntoOutputSlot(result.getItem());
     }
 
     private boolean canInsertItemIntoOutputSlot(Item item) {
@@ -148,10 +152,19 @@ public class Tier1TableBlockEntity extends BlockEntity implements MenuProvider {
 
     private Optional<Tier1TableRecipie> getCurrentRecipe() {
         SimpleContainer inventory = new SimpleContainer(this.inventory.getSlots());
-        for(int i = 0; i < this.inventory.getSlots(); i++ ){
+        for(int i = 0; i < 25; i++ ){
             inventory.setItem(i, this.inventory.getStackInSlot(i));
         }
 
         return this.level.getRecipeManager().getRecipeFor(Tier1TableRecipie.Type.INSTANCE, inventory, level);
+    }
+
+    public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
+        if(hasRecipe()){
+            setChanged(pLevel,pPos,pState);
+            System.out.println("has recipe called");
+            craftItem();
+        }
+        System.out.println("tick called");
     }
 }

@@ -4,7 +4,9 @@ import com.jzells.corruptedbotany.registries.BlockEntityRegistries;
 import com.jzells.corruptedbotany.registries.blocks.blockentity.Tier1TableBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -16,6 +18,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -106,5 +109,19 @@ public class Tier1TableBlock extends BaseEntityBlock {
     }
 
     //to do gfet recipe working
+
+
+    @Override
+    public RenderShape getRenderShape(BlockState pState) {
+        return RenderShape.MODEL;
+    }
+
+    @Nullable
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState, BlockEntityType<T> pBlockEntityType) {
+        if(pLevel.isClientSide) {return null;}
+        return createTickerHelper(pBlockEntityType, BlockEntityRegistries.TIER_1_TABLE_ENTITY.get(),
+                (pLevel1, pPos, pState1, pBlockEntity)-> pBlockEntity.tick(pLevel1,pPos,pState1));
+        }
 }
 

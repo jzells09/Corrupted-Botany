@@ -84,11 +84,11 @@ public class Tier1TableRecipie implements Recipe<SimpleContainer> {
 
             ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(jsonObject,"result"));
 
-            JsonArray ingredients = GsonHelper.getAsJsonArray(jsonObject, "inrgedients");
+            JsonArray ingredients = GsonHelper.getAsJsonArray(jsonObject, "ingredients");
 
             NonNullList<Ingredient> inputs = NonNullList.withSize(25, Ingredient.EMPTY);
 
-            for(int i = 0; i < inputs.size(); i++){
+            for(int i = 0; i < 25; i++){
                 inputs.set(i, Ingredient.fromJson(ingredients.get(i)));
             }
 

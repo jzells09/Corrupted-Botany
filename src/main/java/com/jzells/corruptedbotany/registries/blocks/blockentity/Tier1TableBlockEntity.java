@@ -169,7 +169,7 @@ public class Tier1TableBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     private boolean CAN_CRAFT = true;
-
+    // TO DO LATER: SHIFT CLICKING!!!
     public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
         if(hasRecipe() && CAN_CRAFT){
             craftItem();

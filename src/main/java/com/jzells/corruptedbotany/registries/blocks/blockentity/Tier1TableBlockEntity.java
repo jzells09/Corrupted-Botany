@@ -151,7 +151,7 @@ public class Tier1TableBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     private Optional<Tier1TableRecipie> getCurrentRecipe() {
-        SimpleContainer inventory = new SimpleContainer(this.inventory.getSlots());
+        SimpleContainer inventory = new SimpleContainer(25); //this.inventory.getSlots()
         for(int i = 0; i < 25; i++ ){
             inventory.setItem(i, this.inventory.getStackInSlot(i));
         }
@@ -162,9 +162,9 @@ public class Tier1TableBlockEntity extends BlockEntity implements MenuProvider {
     public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
         if(hasRecipe()){
             setChanged(pLevel,pPos,pState);
-            System.out.println("has recipe called");
+
             craftItem();
         }
-        System.out.println("tick called");
+
     }
 }

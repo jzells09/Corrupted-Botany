@@ -29,13 +29,15 @@ public class Tier1TableRecipie implements Recipe<SimpleContainer> {
     @Override
     public boolean matches(SimpleContainer simpleContainer, Level level) {
         int total = 25;
-        int correct = 0;
+        int correct = 1;
         if(level.isClientSide){
             return false;
         }
         for(int i = 0; i < 25; i++){
-            if(ingredients.get(i).test(simpleContainer.getItem(i)));
-            correct++;
+            if(ingredients.get(i).test(simpleContainer.getItem(i))){
+                correct++;
+            }
+
         }
         return total == correct;
     }

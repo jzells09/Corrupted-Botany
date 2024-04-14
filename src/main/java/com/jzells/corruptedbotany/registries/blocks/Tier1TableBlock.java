@@ -1,13 +1,10 @@
 package com.jzells.corruptedbotany.registries.blocks;
 
-import com.jzells.corruptedbotany.entities.client.ClientHooks;
 import com.jzells.corruptedbotany.registries.BlockEntityRegistries;
 import com.jzells.corruptedbotany.registries.blocks.blockentity.Tier1TableBlockEntity;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -16,24 +13,26 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.items.ItemStackHandler;
+import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.stream.Stream;
 
-public class Tier1TableBlock extends Block implements EntityBlock {
+public class Tier1TableBlock extends BaseEntityBlock {
     public Tier1TableBlock(Properties pProperties) {
         super(pProperties);
     }
@@ -72,16 +71,21 @@ public class Tier1TableBlock extends Block implements EntityBlock {
 
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        if(pHand != InteractionHand.MAIN_HAND) return InteractionResult.PASS;
-        if(!pLevel.isClientSide()) return InteractionResult.SUCCESS;
         BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
 
-        if(blockEntity instanceof  Tier1TableBlockEntity){
-            // open screen
-            DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> ClientHooks.openTier1TableBlockScreen(pPos));
+        if(!(blockEntity instanceof  Tier1TableBlockEntity tier1TableBlockEntity)){
+            return  InteractionResult.PASS;
+        }
+        if(pLevel.isClientSide()){
             return  InteractionResult.SUCCESS;
         }
-        return  InteractionResult.FAIL;
+
+        //open screen
+        if(pPlayer instanceof ServerPlayer serverPlayer){
+            NetworkHooks.openScreen(((ServerPlayer) pPlayer), (Tier1TableBlockEntity)blockEntity, pPos);
+        }
+
+        return InteractionResult.CONSUME;
 
     }
 
@@ -101,6 +105,6 @@ public class Tier1TableBlock extends Block implements EntityBlock {
         super.onRemove(pState, pLevel, pPos, pNewState, pMovedByPiston);
     }
 
-
+    //to do gfet recipe working
 }
 

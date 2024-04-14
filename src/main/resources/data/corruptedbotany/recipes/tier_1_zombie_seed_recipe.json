@@ -1,0 +1,11 @@
+{
+  "type": "corruptedbotany:tier_1_table",
+  "ingredients": [
+    {
+      "item": "corruptedbotany:tier_0_essence"
+    }
+  ],
+  "result": {
+    "item": "corruptedbotany:tier_1_zombie_seed"
+  }
+}

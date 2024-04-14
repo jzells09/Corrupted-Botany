@@ -3,8 +3,10 @@ package com.jzells.corruptedbotany;
 import com.jzells.corruptedbotany.entities.client.renderers.Tier1ZombieRenderer;
 import com.jzells.corruptedbotany.entities.client.renderers.Tier2ZombieRenderer;
 import com.jzells.corruptedbotany.entities.client.renderers.Tier3ZombieSpiderRenderer;
+import com.jzells.corruptedbotany.recipe.RecipeRegistries;
 import com.jzells.corruptedbotany.registries.BlockEntityRegistries;
 import com.jzells.corruptedbotany.registries.EntityRegistries;
+import com.jzells.corruptedbotany.registries.MenuRegistries;
 import com.jzells.corruptedbotany.registries.Registries;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -42,6 +44,8 @@ public class CorruptedBotany
         Registries.register(modEventBus);
         EntityRegistries.register(modEventBus);
         BlockEntityRegistries.register(modEventBus);
+        MenuRegistries.register(modEventBus);
+        RecipeRegistries.register(modEventBus);
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);

@@ -28,8 +28,7 @@ public class Tier1TableRecipie implements Recipe<SimpleContainer> {
 
     @Override
     public boolean matches(SimpleContainer simpleContainer, Level level) {
-        int total = 25;
-        int correct = 1;
+        int correct = 0;
         if(level.isClientSide){
             return false;
         }
@@ -39,7 +38,7 @@ public class Tier1TableRecipie implements Recipe<SimpleContainer> {
             }
 
         }
-        return total == correct;
+        return 25 == correct;
     }
 
     @Override

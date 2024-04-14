@@ -14,6 +14,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -123,11 +124,15 @@ public class Tier1TableBlockEntity extends BlockEntity implements MenuProvider {
     public void craftItem(){
         Optional<Tier1TableRecipie> recipe = getCurrentRecipe();
         ItemStack result = recipe.get().getResultItem(null);
+        this.inventory.setStackInSlot(OUTPUT_SLOT, new ItemStack(result.getItem(),
+                result.getCount()));
+    }
+
+    public void removeInputs(){
         for(int i = 0; i < 25; i++){
             this.inventory.extractItem(i,1,false);
+            CAN_CRAFT = true;
         }
-        this.inventory.setStackInSlot(OUTPUT_SLOT, new ItemStack(result.getItem(),
-                this.inventory.getStackInSlot(OUTPUT_SLOT).getCount() + result.getCount()));
     }
 
     public boolean hasRecipe(){
@@ -137,8 +142,8 @@ public class Tier1TableBlockEntity extends BlockEntity implements MenuProvider {
             return false;
         }
         ItemStack result = recipe.get().getResultItem(null);
-
         return canInsertAmountIntoOutputSlot(result.getCount()) && canInsertItemIntoOutputSlot(result.getItem());
+
     }
 
     private boolean canInsertItemIntoOutputSlot(Item item) {
@@ -158,13 +163,24 @@ public class Tier1TableBlockEntity extends BlockEntity implements MenuProvider {
         return this.level.getRecipeManager().getRecipeFor(Tier1TableRecipie.Type.INSTANCE, inventory, level);
     }
 
+    private void removeCraftedItem(){
+        inventory.extractItem(OUTPUT_SLOT,1,false);
+        CAN_CRAFT = true;
+    }
+
+    private boolean CAN_CRAFT = true;
+
     public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
-        if(hasRecipe()){
+        if(hasRecipe() && CAN_CRAFT){
             craftItem();
+            CAN_CRAFT = false;
             setChanged(pLevel,pPos,pState);
-
-
+        } else if(!hasRecipe()){
+            removeCraftedItem();
+        } else if(hasRecipe() && inventory.getStackInSlot(OUTPUT_SLOT).is(Items.AIR)){
+            removeInputs();
         }
 
     }
+
 }

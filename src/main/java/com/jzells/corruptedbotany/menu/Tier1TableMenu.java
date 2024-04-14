@@ -46,7 +46,12 @@ public class Tier1TableMenu extends AbstractContainerMenu {
                     addSlot(new SlotItemHandler(inventory, col + (row * 5), 26 + (col * 18), 34 + (row * 18)));
                 }
             }
-            addSlot(new SlotItemHandler(inventory,26,144,70));
+            addSlot(new SlotItemHandler(inventory,26,144,70){
+                @Override
+                public boolean mayPlace(@NotNull ItemStack stack) {
+                    return false;
+                }
+            });
             addSlot(new SlotItemHandler(inventory,25,26,141){
                 @Override
                 public boolean mayPlace(@NotNull ItemStack stack) {
